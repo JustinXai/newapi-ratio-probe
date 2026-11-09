@@ -58,8 +58,11 @@ UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36")
 
 # Explicit prefixes only: a loose regex would fold grok / glm into gpt.
+# `gpt-?\d` covers the whole GPT-4/5/6 line (gpt-5.6-sol, gpt-6-astra, gpt-6.1-terra...).
+# The o1/o3/o4 entries are 2025-era models that still show up as legacy stock on many
+# gateways, so they are kept for completeness but are not the current lineup.
 FAMILIES = [
-    ("gpt", re.compile(r"^(gpt-|chatgpt|o1|o3|o4|gpt4)", re.I)),
+    ("gpt", re.compile(r"^(gpt-?\d|chatgpt|gpt4|o[134](?![0-9a-z]))", re.I)),
     ("claude", re.compile(r"^claude", re.I)),
     ("gemini", re.compile(r"^gemini", re.I)),
     ("grok", re.compile(r"^grok", re.I)),
