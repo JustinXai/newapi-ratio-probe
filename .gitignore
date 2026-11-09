@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+ratios.json
+out.json
+domains.txt
